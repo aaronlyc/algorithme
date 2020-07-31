@@ -12,7 +12,7 @@ func TestSortList(t *testing.T) {
 		args []int
 		want []int
 	}{
-		{"空", []int{4, 2, 1, 3}, []int{1, 2, 3, 4}},
+		{"test1", []int{4, 2, 1, 3}, []int{1, 2, 3, 4}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

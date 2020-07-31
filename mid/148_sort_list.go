@@ -24,8 +24,7 @@ func sortList(head *s.ListNode) *s.ListNode {
 	midNode := findMidNode(head)
 	rightList := midNode.Next
 	midNode.Next = nil
-	leftSortList := sortList(head)
-	rigthSortList := sortList(rightList)
+	leftSortList, rigthSortList := sortList(head), sortList(rightList)
 
 	// 2. 后和两个排序的链表
 	return mergeTwoSortList(leftSortList, rigthSortList)
@@ -39,8 +38,7 @@ func findMidNode(head *s.ListNode) *s.ListNode {
 	slow, fast := head, head.Next
 	// 结束条件: fast == nil || fast.Next == nil
 	for fast != nil && fast.Next != nil {
-		slow = slow.Next
-		fast = fast.Next.Next
+		slow, fast = slow.Next, fast.Next.Next
 	}
 	return slow
 }
@@ -50,11 +48,9 @@ func mergeTwoSortList(l1, l2 *s.ListNode) *s.ListNode {
 	head := dummy
 	for l1 != nil && l2 != nil {
 		if l1.Val < l2.Val {
-			head.Next = l1
-			l1 = l1.Next
+			head.Next, l1 = l1, l1.Next
 		} else {
-			head.Next = l2
-			l2 = l2.Next
+			head.Next, l2 = l2, l2.Next
 		}
 		head = head.Next
 	}
