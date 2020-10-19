@@ -1,7 +1,7 @@
 package mid
 
 import (
-	"example.com/algorithms/mock"
+	"example.com/algorithms/algo/mock"
 	"reflect"
 	"testing"
 )

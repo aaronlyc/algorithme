@@ -1,6 +1,6 @@
 package mock
 
-import s "example.com/algorithms/struct"
+import s "example.com/algorithms/algo/struct"
 
 func MackIntSlice2List(intSlice []int) *s.ListNode {
 	dummy := new(s.ListNode)

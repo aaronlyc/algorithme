@@ -8,7 +8,7 @@ package mid
  * }
  */
 import (
-	s "example.com/algorithms/struct"
+	s "example.com/algorithms/algo/struct"
 )
 
 // 方法一: 递归
