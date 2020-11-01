@@ -25,8 +25,8 @@ func bfs(start, target)
 				if (x not in visited) //判断x是否已被访问过, 如果已经访问过了, 则不需要加入了
 					q.offer(x)
 					visited.add(x)
-			//第三步: 步数加1
-			step++
+		//第三步: 步数加1(该层都遍历完)
+		step++
 */
 package bfs
 
@@ -60,9 +60,8 @@ func bfs(start, target int) int {
 					visited[adjs[j].(int)] = struct{}{}
 				}
 			}
-
-			step++
 		}
+		step++
 	}
 	return step
 }
