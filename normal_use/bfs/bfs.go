@@ -32,6 +32,7 @@ package bfs
 
 import "example.com/algorithms/data_struct"
 
+// bfs 此处为bfs的一般模板. 主要思想是: 用q保存需要访问的队列, visited记录已访问过的结点
 func bfs(start, target int) int {
 	q := data_struct.NewSliceQueue()
 	visited := make(map[int]struct{})
