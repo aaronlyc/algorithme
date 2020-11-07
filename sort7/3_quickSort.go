@@ -6,31 +6,54 @@ func quickSort(nums []int) {
 }
 
 func recursionSort(nums []int, left int, right int) {
-	if left < right {
-		pivot := partition(nums, left, right)
-		recursionSort(nums, left, pivot-1)
-		recursionSort(nums, pivot+1, right)
+	if left >= right {
+		return
 	}
+	pivot := partition(nums, left, right)
+	recursionSort(nums, left, pivot-1)
+	recursionSort(nums, pivot+1, right)
 }
+
+/*
+partition 为快速排序的切分算法, 每切分一次可以确定切分点的位置, 这里主要是二向切分, 下面还会有三向切分
+*/
 
 func partition(nums []int, left int, right int) int {
-	for left < right {
-		for left < right && nums[left] <= nums[right] {
-			right--
+	i, j := left, right
+	for {
+		for i < j && nums[left] <= nums[j] {
+			j--
 		}
-		if left < right {
-			nums[left], nums[right] = nums[right], nums[left]
-			left++
+		for i < j && nums[left] >= nums[i] {
+			i++
 		}
-
-		for left < right && nums[left] <= nums[right] {
-			left++
+		if i >= j {
+			break
 		}
-		if left < right {
-			nums[left], nums[right] = nums[right], nums[left]
-			right--
-		}
+		swap(nums, i, j)
 	}
-
-	return left
+	swap(nums, left, j)
+	return i
 }
+
+//func partition(nums []int, left int, right int) int {
+//	for left < right {
+//		for left < right && nums[left] <= nums[right] {
+//			right--
+//		}
+//		if left < right {
+//			nums[left], nums[right] = nums[right], nums[left]
+//			left++
+//		}
+//
+//		for left < right && nums[left] <= nums[right] {
+//			left++
+//		}
+//		if left < right {
+//			nums[left], nums[right] = nums[right], nums[left]
+//			right--
+//		}
+//	}
+//
+//	return left
+//}

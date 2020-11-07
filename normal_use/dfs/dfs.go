@@ -98,7 +98,7 @@ func subsets(nums []int) [][]int {
 	问题分析: 可以类比全排列问题, 只不过结果数组中只有两个元素, 在每个元素中尝试填入任意n组成的数组的元素
 */
 func combine(n int, k int) [][]int {
-	if n < k {
+	if n < 1 || k < 1 || n < k {
 		return nil
 	}
 	result := make([][]int, 0, 0)
@@ -106,7 +106,7 @@ func combine(n int, k int) [][]int {
 
 	var dfs func(int)
 	dfs = func(cur int) {
-		if len(choose) == k || cur == n+1 {
+		if len(choose) == k || cur > n {
 			if len(choose) != k {
 				return
 			}
