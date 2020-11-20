@@ -126,3 +126,26 @@ func combine(n int, k int) [][]int {
 	dfs(1)
 	return result
 }
+
+// 目标和
+func findTargetSumWays(nums []int, S int) int {
+	left, res := S, 0
+	var dfs func(int)
+	dfs = func(cur int) {
+		if cur == len(nums) {
+			if left == 0 {
+				res++
+			}
+			return
+		}
+		left = left - nums[cur]
+		dfs(cur + 1)
+		left = left + nums[cur]
+
+		left = left + nums[cur]
+		dfs(cur + 1)
+		left = left - nums[cur]
+	}
+	dfs(0)
+	return res
+}

@@ -131,3 +131,32 @@ func Test_combine(t *testing.T) {
 		})
 	}
 }
+
+func Test_findTargetSumWays(t *testing.T) {
+	type args struct {
+		n []int
+		k int
+	}
+	tests := []struct {
+		name string
+		args args
+		want [][]int
+	}{
+		{
+			name: "test1",
+			args: args{
+				n: []int{1, 1, 1, 1, 1},
+				k: 3,
+			},
+			want: nil,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			time.Sleep(5 * time.Second)
+			if got := findTargetSumWays(tt.args.n, tt.args.k); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("findTargetSumWays() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
